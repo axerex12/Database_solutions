@@ -1,0 +1,16 @@
+com\example\SpringProject\controller\OrderController.class
+com\example\SpringProject\repository\ProductRepository.class
+com\example\SpringProject\entity\Product.class
+com\example\SpringProject\service\SupplierService.class
+com\example\SpringProject\controller\ProductController.class
+com\example\SpringProject\entity\Supplier.class
+com\example\SpringProject\dao\ProductDto.class
+com\example\SpringProject\SpringProjectApplication.class
+com\example\SpringProject\service\ProductService.class
+com\example\SpringProject\dao\SupplierDto.class
+com\example\SpringProject\repository\SupplierRepository.class
+com\example\SpringProject\repository\CategoryRepository.class
+com\example\SpringProject\entity\SupplierAddress.class
+com\example\SpringProject\controller\CategoryController.class
+com\example\SpringProject\controller\SupplierController.class
+com\example\SpringProject\entity\Category.class

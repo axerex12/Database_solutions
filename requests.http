@@ -1,0 +1,54 @@
+POST http://localhost:8081/categories
+Content-Type: application/json
+
+{
+  "name": "Elektroniikka",
+  "products": [
+    {
+      "productName": "Älypuhelin",
+      "price": 699.0,
+      "supplier_id": 1
+    },
+    {
+      "productName": "Kannettava",
+      "price": 1299.0,
+      "supplier_id": 1
+    }
+  ]
+}
+
+###
+GET  http://localhost:8081/suppliers/sampo.kuusela@koskenkone.fi
+
+###
+GET  http://localhost:8081/products/1
+
+###
+GET http://localhost:8081/products/category/2
+
+###
+POST http://localhost:8081/products
+Content-Type: application/json
+
+{
+  "name": "Uusi Tuote!",
+  "description": "Tuotekuvaus",
+  "price": 49.99,
+  "stockQuantity": 25,
+  "categoryId": 2,
+  "supplierId": 1
+}
+
+###
+PATCH http://localhost:8081/products/1
+Content-Type: application/json
+
+{
+  "price": 59.99,
+  "stockQuantity": 30,
+  "description": "Päivitetty kuvaus"
+}
+###
+GET http://localhost:8081/orders/customer/1
+
+
