@@ -48,7 +48,8 @@ public class ProductController {
     }
 
     @PatchMapping("/{id}")
-    public ResponseEntity<ProductDto> patchProduct(@PathVariable Integer id, @RequestBody ProductUpsertRequest request) {
+    public ResponseEntity<ProductDto> patchProduct(@PathVariable Integer id,
+            @RequestBody ProductUpsertRequest request) {
         ProductDto updated = productService.patchProduct(id, request);
         return ResponseEntity.ok(updated);
     }
