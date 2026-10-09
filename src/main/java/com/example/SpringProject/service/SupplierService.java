@@ -1,5 +1,8 @@
 package com.example.SpringProject.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import com.example.SpringProject.dao.SupplierDto;
@@ -18,7 +21,26 @@ public class SupplierService {
     public SupplierDto getSupplierByEmail(String email) {
         Supplier supplier = repository.findByEmail(email);
 
+        return mapToDto(supplier);
+    }
+
+    public List<SupplierDto> getAllSuppliers() {
+        return repository.findAll().stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public SupplierDto getSupplierById(Integer id) {
+        return repository.findById(id).map(this::mapToDto).orElse(null);
+    }
+
+    private SupplierDto mapToDto(Supplier supplier) {
+        if (supplier == null) {
+            return null;
+        }
+
         SupplierDto supplierDto = new SupplierDto();
+        supplierDto.setId(supplier.getId());
         supplierDto.setEmail(supplier.getEmail());
         supplierDto.setName(supplier.getName());
         supplierDto.setPhone(supplier.getPhone());

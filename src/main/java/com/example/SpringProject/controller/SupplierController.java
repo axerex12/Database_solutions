@@ -1,5 +1,7 @@
 package com.example.SpringProject.controller;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,6 +24,20 @@ public class SupplierController {
     @GetMapping("/{email}")
     public ResponseEntity<SupplierDto> getSupplierByName(@PathVariable String email) {
         SupplierDto dto = service.getSupplierByEmail(email);
+        if (dto == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(dto);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<SupplierDto>> getAllSuppliers() {
+        return ResponseEntity.ok(service.getAllSuppliers());
+    }
+
+    @GetMapping("/id/{id}")
+    public ResponseEntity<SupplierDto> getSupplierById(@PathVariable Integer id) {
+        SupplierDto dto = service.getSupplierById(id);
         if (dto == null) {
             return ResponseEntity.notFound().build();
         }

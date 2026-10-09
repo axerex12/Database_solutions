@@ -43,6 +43,27 @@ public class ProductService {
                 .collect(Collectors.toList());
     }
 
+    public List<ProductDto> getAllProducts() {
+        return productRepository.findAll()
+                .stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDto> getProductsBySupplierId(Integer supplierId) {
+        return productRepository.findBySupplierId(supplierId)
+                .stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
+    public List<ProductDto> searchProducts(String name) {
+        return productRepository.findByProductNameContainingIgnoreCase(name)
+                .stream()
+                .map(this::mapToDto)
+                .collect(Collectors.toList());
+    }
+
     public ProductDto createProduct(ProductUpsertRequest request) {
         validateCreateRequest(request);
 

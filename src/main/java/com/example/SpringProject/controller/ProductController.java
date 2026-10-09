@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.SpringProject.dao.ProductDto;
@@ -39,6 +40,21 @@ public class ProductController {
     public ResponseEntity<List<ProductDto>> getProductsByCategory(@PathVariable Integer categoryId) {
         List<ProductDto> products = productService.getProductsByCategoryId(categoryId);
         return ResponseEntity.ok(products);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<ProductDto>> getAllProducts() {
+        return ResponseEntity.ok(productService.getAllProducts());
+    }
+
+    @GetMapping("/supplier/{supplierId}")
+    public ResponseEntity<List<ProductDto>> getProductsBySupplier(@PathVariable Integer supplierId) {
+        return ResponseEntity.ok(productService.getProductsBySupplierId(supplierId));
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<ProductDto>> searchProducts(@RequestParam String name) {
+        return ResponseEntity.ok(productService.searchProducts(name));
     }
 
     @PostMapping

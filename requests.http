@@ -16,15 +16,50 @@ Content-Type: application/json
     }
   ]
 }
+    GET http://localhost:8081/categories
+
+    ###
+    GET http://localhost:8081/categories/2
+
+    ###
+    PUT http://localhost:8081/categories/2
+    Content-Type: application/json
+
+    {
+      "name": "Elektroniikka ja tarvikkeet"
+    }
+
+    ###
+    DELETE http://localhost:8081/categories/2
+
+    ###
+    GET http://localhost:8081/categories/2/products
+
+    ###
 
 ###
 GET  http://localhost:8081/suppliers/sampo.kuusela@koskenkone.fi
+    GET http://localhost:8081/suppliers
+
+    ###
+    GET http://localhost:8081/suppliers/id/1
+
+    ###
 
 ###
 GET  http://localhost:8081/products/1
 
 ###
 GET http://localhost:8081/products/category/2
+    GET http://localhost:8081/products
+
+    ###
+    GET http://localhost:8081/products/supplier/1
+
+    ###
+    GET http://localhost:8081/products/search?name=puhelin
+
+    ###
 
 ###
 POST http://localhost:8081/products
@@ -48,6 +83,10 @@ Content-Type: application/json
   "stockQuantity": 30,
   "description": "Päivitetty kuvaus"
 }
+
+###
+DELETE http://localhost:8081/products/1
+
 ###
 GET http://localhost:8081/orders/customer/1
 
